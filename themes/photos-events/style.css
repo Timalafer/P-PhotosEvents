@@ -1,0 +1,1440 @@
+/*
+Theme Name: PhotoEvents
+Author: Tima
+Author URI: https://openclassrooms.com
+Description: Thème pour une photographe professionnelle Nathalie Mota
+Version: 1.0
+Tags: photographe, événement, professionel 
+Text Domain:  photographie professionnelle
+*/
+
+
+/* CSS pour les Fonts */
+@font-face {
+    font-family: "PoppinsBold";
+    src: url("../fonts/poppins-bold-webfont.woff2") format("woff2"), url("../fonts/poppins-bold-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PoppinsItalic";
+    src: url("../fonts/poppins-italic-webfont.woff2") format("woff2"), url("../fonts/poppins-italic-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PoppinsMedium";
+    src: url("../fonts/poppins-medium-webfont.woff2") format("woff2"), url("../fonts/poppins-medium-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PoppinsRegular";
+    src: url("../fonts/poppins-regular-webfont.woff2") format("woff2"), url("../fonts/poppins-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "space_monobold";
+    src: url("../fonts/spacemono-bold-webfont.woff2") format("woff2"), url("../fonts/spacemono-bold-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "space_monobold_italic";
+    src: url("../fonts/spacemono-bolditalic-webfont.woff2") format("woff2"), url("../fonts/spacemono-bolditalic-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "space_monoitalic";
+    src: url("../fonts/spacemono-italic-webfont.woff2") format("woff2"), url("../fonts/spacemono-italic-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "space_monoregular";
+    src: url("../fonts/spacemono-regular-webfont.woff2") format("woff2"), url("../fonts/spacemono-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/*front-page*/
+
+/*Ensemble de keyframes */
+@keyframes AnimationVersBas {
+    0% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes AnimationVersHaut {
+    0% {
+        transform: translateY(200px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* CSS pour le body */
+body {
+    max-width: 1440px;
+    margin: auto;
+}
+
+body ul {
+    list-style-type: none;
+}
+
+body a {
+    color: black;
+    text-decoration: none;
+    font-family: space_monoregular;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: space_monoregular;
+    font-size: 60px;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 58px;
+}
+
+@media (max-width: 1140px) {
+    h2 {
+        font-size: 40px;
+        width: 415px;
+    }
+}
+
+h3 {
+    font-family: space_monoregular;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0.1em;
+    text-align: left;
+}
+
+p {
+    margin-bottom: 15px;
+    font-family: PoppinsRegular;
+    font-size: 14px;
+}
+
+/*header */
+
+header {
+    padding-inline: 145px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    background: #FFF;
+    box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
+
+}
+
+header .siteNavigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+header .siteNavigation .logo img {
+    width: 215px;
+    height: 15px;
+
+}
+
+header .siteNavigation .burgerMenu {
+    display: none;
+}
+
+header .siteNavigation .navigation {
+    display: flex;
+    align-items: center;
+}
+
+header ul {
+
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+
+}
+
+header li a {
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    color: #000;
+
+}
+
+header li a:hover {
+    font-weight: 700;
+}
+
+
+
+/* RESPONSIVE mobile */
+@media screen and (max-width: 465px) {
+    header {
+        padding-inline: 16px;
+    }
+
+    header.open {
+        position: relative;
+        z-index: 2;
+        animation: openNav 0.7s ease-in-out 0s forwards;
+
+    }
+
+    @keyframes openNav {
+        0% {
+            transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+            -moz-transform: translateX(100%);
+            -ms-transform: translateX(100%);
+            -o-transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    header .siteNavigation .burgerMenu {
+        width: 30px;
+        height: 20px;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    header .siteNavigation .burgerMenu .bar {
+        width: 100%;
+        height: 4px;
+        background-color: black;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    header .siteNavigation .burgerMenu.open .bar:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    header .siteNavigation .burgerMenu.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    header .siteNavigation .burgerMenu.open .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    header .siteNavigation .navigation {
+        display: none !important;
+    }
+
+    header .siteNavigation .navigation.open {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: -16px;
+        right: 0;
+        background-color: #E00000;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    header .siteNavigation .navigation .menuNavigation {
+        flex-direction: column;
+        gap: 18px;
+        height: 600px;
+        justify-content: center;
+        align-items: center;
+        padding-inline: 0;
+    }
+
+    header .siteNavigation .navigation .menuNavigation li {
+        font-size: 45px !important;
+    }
+
+    header .siteNavigation .navigation .menuNavigation li a {
+        color: #FFF !important;
+    }
+}
+
+/* Tablette */
+@media only screen and (min-width: 768px) and (max-width: 960px) {
+    header {
+        padding-inline: 55px;
+    }
+}
+
+/*footer*/
+
+
+.site-footer {
+
+    padding: 0;
+    position: relative;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    /* Centre les éléments horizontalement */
+    margin: 10px 100px;
+
+}
+
+.menu li {
+    margin: 15px 0;
+    text-decoration: none;
+    text-align: center;
+    list-style: none;
+
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #000;
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+.footer-line {
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+@media (max-width: 465px) {
+    .menu {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0 0 0;
+        margin: 10px;
+    }
+}
+
+
+
+/* CSS pour la partie banner */
+.banner {
+    height: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+@media screen and (max-width: 770px) {
+    .banner {
+        height: 250px;
+    }
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    position: absolute;
+    top: 3px;
+    animation: AnimationVersBas 2s;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 85%;
+    height: 10%;
+    font-family: "space_monobold_italic", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 6vw;
+    line-height: 10vh;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 3px #ffffff;
+    -webkit-text-fill-color: transparent;
+    z-index: 1;
+    animation: AnimationVersHaut 2s;
+}
+
+@media screen and (max-width: 770px) {
+    h1 {
+        -webkit-text-stroke: 1px #ffffff;
+    }
+}
+
+
+
+/*popup*/
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 3, 0.8);
+    /* #00000388;   c'est ca qui fait un aspect d'Overlay */
+    display: none;
+    /* elle sera activer par Jquery avec la methode css('display', 'flex'); */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-overlay.open {
+    display: flex;
+}
+
+.popup-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    border: 2px solid black;
+    background: white;
+    margin-top: 16px;
+    padding: 8px 40px 40px 40px;
+    height: auto;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* CSS pour le Formulaire */
+.formulaire {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+#wpcf7-f14-o1 form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    font-size: 12px;
+    font-family: PoppinsMedium;
+    font-weight: bolder;
+    line-height: 18px;
+}
+
+.wpcf7-submit {
+    background: #D8D8D8;
+    height: 50px;
+    width: 275px;
+    border: 1px solid #B8BBC2;
+}
+
+.formulaireCF7TextSimple,
+.formulaireCF7TextArea {
+    width: 100%;
+    border-radius: 8px;
+    width: 270px;
+    border: 1px solid #B8BBC2;
+    resize: none;
+}
+
+.formulaireCF7TextSimple {
+    height: 30px;
+}
+
+
+
+.formulaireCF7TextArea {
+    height: 170px;
+}
+
+/*filtres*/
+
+#gallery-filters {
+    padding-top: 50px;
+    width: 1140px;
+    height: 43px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+@media screen and (max-width: 770px) {
+    #gallery-filters {
+        width: 315px;
+    }
+}
+
+
+@media screen and (min-width: 770px) and (max-width: 1140px) {
+    #gallery-filters {
+        width: 715px;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    #gallery-filters {
+        flex-direction: column;
+        gap: 2px;
+        margin-bottom: 50px;
+    }
+}
+
+.custom-select {
+    width: 260px;
+    height: 43px;
+    border: 1.3px solid #B8BBC2;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: transparent;
+
+}
+
+@media screen and (min-width: 770px) and (max-width: 1140px) {
+    .custom-select {
+        width: 145px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .custom-select {
+        width: 100px;
+        padding: 0px;
+        height: 30px;
+    }
+}
+
+/* Ajouter du CSS pour personnaliser Select2 */
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: transparent !important;
+
+}
+
+.select2-container--default .select2-results__option:hover {
+    background-color: #FE5858 !important;
+    color: white !important;
+}
+
+.select2-container--default .select2-results__option:first-child {
+    background-color: #FFD6D6 !important;
+    color: #000 !important;
+}
+
+.select2-container--default .select2-results__option:not(:first-child)[aria-selected=true] {
+    background-color: #E00000 !important;
+    color: #fff !important;
+}
+
+
+/* CSS pour la galerie */
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: auto;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* CSS pour le bouton "Charger plus de photos" */
+#load-more {
+    display: block;
+    border: 1.3px solid rgba(184, 187, 194, 1);
+    line-height: 18px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+
+    letter-spacing: 0;
+    width: 270px;
+    height: 50px;
+
+
+    padding: 8px 15px;
+    border-radius: 2px;
+    margin: 0 auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: rgba(216, 216, 216, 1);
+}
+
+#load-more:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+
+/* CSS pour la page single-photo */
+
+.galleryPhotos {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 820px) {
+    .galleryPhotos {
+        height: 100%;
+    }
+}
+
+.detailPhoto {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+}
+
+@media screen and (max-width: 765px) {
+    .detailPhoto {
+        flex-direction: column;
+    }
+}
+
+.detailPhoto .containerPhoto {
+    object-fit: cover;
+    width: 50%;
+    height: 100%;
+}
+
+@media screen and (max-width: 820px) {
+    .detailPhoto .containerPhoto {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.detailPhoto img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.cataloguePhotos {
+    display: flex;
+    flex-direction: column;
+    padding-top: 76px;
+    max-width: 80%;
+    margin: auto;
+}
+
+@media screen and (max-width: 765px) {
+    .cataloguePhotos {
+        max-width: 375px;
+    }
+}
+
+.singlePhotoOverlay {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 0;
+    transition: background-color 0.3s, opacity 0.3s;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 765px) {
+    .singlePhotoOverlay {
+        left: 0;
+        width: 100%;
+        position: relative;
+    }
+}
+
+.singlePhotoOverlay:hover {
+    opacity: 0.8;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.singlePhotoOverlay:hover .fullscreen-icon {
+    display: block;
+}
+
+.singlePhotoOverlay .fullscreen-icon {
+    display: none;
+    left: 85%;
+    position: absolute;
+    top: 2%;
+    width: 34px;
+    height: 34px;
+}
+
+.containerPhoto:hover .fullscreen-iconSingle {
+    display: block;
+}
+
+.selecteurK {
+    width: 50%;
+    text-align: left;
+    border-bottom: solid black 1px;
+    padding-bottom: 40px;
+    font-family: space_monoregular;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+}
+
+@media screen and (max-width: 820px) {
+    .selecteurK {
+        width: 100%;
+        left: 10px;
+        position: relative;
+    }
+
+    .selecteurK h2 {
+        width: 262px;
+        height: 96px;
+    }
+}
+
+.contenairContact {
+    width: 100%;
+    height: 118px;
+    align-items: center;
+    border-bottom: solid black 1px;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 820px) {
+    .contenairContact {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .contenairContact p {
+        font-family: PoppinsRegular;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 21px;
+        letter-spacing: 0em;
+        width: 263px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.contenairContact .contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+}
+
+@media screen and (max-width: 820px) {
+    .contenairContact .contact {
+        flex-direction: column;
+    }
+}
+
+#boutonContact {
+    width: 272px;
+    height: 50px;
+    line-height: 100%;
+    background-color: #D8D8D8;
+    font-family: space_monoregular;
+    font-weight: 400;
+    font-size: 12px;
+    border-radius: 2px;
+    border: none;
+}
+
+@media screen and (max-width: 820px) {
+    #boutonContact {
+        width: 263px;
+    }
+}
+
+#boutonContact:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.taxonomies {
+    display: flex;
+    flex-direction: column;
+}
+
+.naviguationPhotos {
+    width: 50%;
+    height: 118px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+@media screen and (max-width: 820px) {
+    .naviguationPhotos {
+        display: none;
+    }
+}
+
+.naviguationArrow {
+    width: 81px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 10px;
+    height: 118px;
+}
+
+.naviguationArrow .arrow {
+    width: 25px;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+}
+
+.naviguationArrow .arrow:hover+.miniPicture {
+    display: flex !important;
+}
+
+.naviguationArrow .arrow .arrow-left {
+    top: 10px;
+    position: relative;
+}
+
+.naviguationArrow .arrow .arrow-right {
+    top: 10px;
+    position: relative;
+}
+
+.miniPicture-content {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.miniPicture,
+.miniPicture-left,
+.miniPicture-right {
+    visibility: hidden;
+    opacity: 0;
+    position: relative;
+    height: 71px;
+    width: 81px;
+    top: 8px;
+    transition: visibility 0.3s, opacity 0.3s linear;
+}
+
+.miniPicture a,
+.miniPicture-left a,
+.miniPicture-right a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.miniPicture a img,
+.miniPicture-left a img,
+.miniPicture-right a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.arrow:hover+.miniPicture,
+.arrow:hover+.miniPicture-left,
+.arrow:hover+.miniPicture-right {
+    visibility: visible;
+    opacity: 1;
+}
+
+#toutesLesPhotos {
+    width: 272px;
+    height: 50px;
+    line-height: 100%;
+    background-color: #D8D8D8;
+    font-family: space_monoregular;
+    font-weight: 400;
+    font-size: 12px;
+    border-radius: 2px;
+    border: none;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#toutesLesPhotos:hover {
+    background-color: black !important;
+    color: white !important;
+}
+
+#toutesLesPhotos a {
+    font-family: space_monoregular;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+#toutesLesPhotos a:hover {
+    cursor: pointer;
+    background-color: black !important;
+    color: white !important;
+}
+
+.titreVousAimerezAussi {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+}
+
+@media screen and (max-width: 1140px) {
+    .titreVousAimerezAussi {
+        display: flex;
+        margin: 10px 0 0 0;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+.interesser {
+    font-family: space_monoregular;
+    font-size: 14px;
+}
+
+.photoNotFound {
+    font-family: PoppinsRegular;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+/* CSS pour la LightBox */
+.PhotoSimilaire {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+@media screen and (max-width: 765px) {
+    .PhotoSimilaire {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.blockPhotoRelative {
+    flex-shrink: 0;
+    position: relative;
+    width: 564px;
+    height: 495px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 765px) and (max-width: 1140px) {
+    .blockPhotoRelative {
+        width: 370px;
+    }
+}
+
+@media screen and (max-width: 765px) {
+    .blockPhotoRelative {
+        width: 318px;
+        height: 279px;
+    }
+}
+
+.blockPhotoRelative img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blockPhotoRelative .overlay:hover .eye-icon,
+.blockPhotoRelative .overlay:hover .fullscreen-icon {
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
+.overlay:hover {
+    opacity: 0.8;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.overlay:hover h2,
+.overlay:hover h3 {
+    display: block;
+}
+
+.overlay h2 {
+    position: absolute;
+    left: 10px;
+    top: 440px;
+    color: white;
+    font-family: PoppinsRegular;
+    font-size: 14px;
+    display: none;
+}
+
+@media screen and (max-width: 765px) {
+    .overlay h2 {
+        top: 227px;
+        font-size: 12px;
+    }
+}
+
+.overlay h3 {
+    position: absolute;
+    left: 476px;
+    top: 452px;
+    color: white;
+    font-family: PoppinsRegular;
+    font-size: 14px;
+    display: none;
+}
+
+@media screen and (max-width: 765px) {
+    .overlay h3 {
+        left: 240px;
+        top: 237px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 765px) and (max-width: 1140px) {
+    .overlay h3 {
+        left: 289px;
+    }
+}
+
+.overlay .eye-icon {
+    width: 46px;
+    height: 31.2px;
+    top: 231.4px;
+    left: 255px;
+    position: absolute;
+    display: none;
+}
+
+@media screen and (max-width: 765px) {
+    .overlay .eye-icon {
+        top: 135px;
+        left: 140px;
+    }
+}
+
+@media screen and (min-width: 765px) and (max-width: 1140px) {
+    .overlay .eye-icon {
+        left: 175px;
+    }
+}
+
+.overlay .fullscreen-icon {
+    position: absolute;
+    cursor: pointer;
+    z-index: 3;
+    width: 34px;
+    height: 34px;
+    top: 11px;
+    left: 512px;
+    border: 1px;
+    display: none;
+}
+
+@media screen and (max-width: 765px) {
+    .overlay .fullscreen-icon {
+        top: 17px;
+        left: 267px;
+    }
+}
+
+@media screen and (min-width: 765px) and (max-width: 1140px) {
+    .overlay .fullscreen-icon {
+        left: 317px;
+    }
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.lightbox .fermelightbox {
+    position: absolute;
+    top: 40px;
+    right: 18%;
+    font-size: 23px;
+    cursor: pointer;
+    color: #fff;
+}
+
+@media screen and (max-width: 1140px) {
+    .lightbox .fermelightbox {
+        right: -8%;
+    }
+}
+
+.lightbox .lightboxPrecedent,
+.lightbox .lightboxSuivant {
+    font-family: space_monoregular;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #fff;
+}
+
+@media screen and (max-width: 765px) {
+
+    .lightbox .lightboxPrecedent,
+    .lightbox .lightboxSuivant {
+        top: 89%;
+    }
+}
+
+@media screen and (min-width: 200px) and (max-width: 300px) {
+
+    .lightbox .lightboxPrecedent,
+    .lightbox .lightboxSuivant {
+        right: 0%;
+        top: 95%;
+    }
+}
+
+.lightbox .lightboxPrecedent:hover,
+.lightbox .lightboxSuivant:hover {
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.lightbox .lightboxPrecedent {
+    left: 12%;
+}
+
+@media screen and (min-width: 765px) and (max-width: 1140px) {
+    .lightbox .lightboxPrecedent {
+        left: -18%;
+        font-size: 25px;
+        z-index: 1;
+        top: 80%;
+    }
+
+    .lightbox .lightboxPrecedent:hover {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 765px) {
+    .lightbox .lightboxPrecedent {
+        right: 0%;
+        left: 0%;
+        top: 95%;
+    }
+}
+
+@media screen and (min-width: 200px) and (max-width: 400px) {
+    .lightbox .lightboxPrecedent {
+        top: 95%;
+        left: -11%;
+    }
+}
+
+.lightbox .lightboxSuivant {
+    right: 15%;
+}
+
+@media screen and (min-width: 765px) and (max-width: 1140px) {
+    .lightbox .lightboxSuivant {
+        right: -16%;
+        font-size: 25px;
+        z-index: 1;
+        top: 80%;
+    }
+
+    .lightbox .lightboxSuivant:hover {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 765px) {
+    .lightbox .lightboxSuivant {
+        right: 0%;
+        top: 95%;
+    }
+}
+
+@media screen and (min-width: 200px) and (max-width: 400px) {
+    .lightbox .lightboxSuivant {
+        top: 95%;
+        right: -8%;
+    }
+}
+
+.lightboxImage {
+    width: 564px;
+    height: 495px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1140px) {
+    .lightboxImage {
+        width: 100%;
+    }
+}
+
+.lightbox .lightbox-caption {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.lightboxReference {
+    font-family: PoppinsRegular;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: 1;
+    bottom: 110px;
+    left: 482px;
+    color: #fff;
+    width: 170px;
+    height: 21px;
+}
+
+@media screen and (min-width: 250px) and (max-width: 350px) {
+    .lightboxReference {
+        bottom: 62px;
+        left: 2px;
+        width: 80px;
+        z-index: 1;
+    }
+}
+
+@media screen and (min-width: 350px) and (max-width: 400px) {
+    .lightboxReference {
+        bottom: 62px;
+        left: 0px;
+        width: 80px;
+        z-index: 1;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 765px) {
+    .lightboxReference {
+        bottom: 80px;
+        left: 22px;
+        width: 80px;
+        z-index: 1;
+    }
+}
+
+@media screen and (min-width: 765px) and (max-width: 1024px) {
+    .lightboxReference {
+        bottom: 10px;
+        left: 17px;
+        width: 80px;
+        z-index: 1;
+        font-size: 25px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1140px) {
+    .lightboxReference {
+        bottom: 15px;
+        width: 80px;
+        font-size: 22px;
+        left: 0px;
+    }
+}
+
+.lightboxCategorie {
+    font-family: space_monoregular;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: right;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: 1;
+    bottom: 110px;
+    right: 482px;
+    color: #fff;
+}
+
+@media screen and (min-width: 250px) and (max-width: 350px) {
+    .lightboxCategorie {
+        bottom: 62px;
+        right: 10px;
+        z-index: 1;
+    }
+}
+
+@media screen and (min-width: 350px) and (max-width: 400px) {
+    .lightboxCategorie {
+        bottom: 62px;
+        right: 15px;
+        z-index: 1;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 765px) {
+    .lightboxCategorie {
+        bottom: 80px;
+        right: 20px;
+        z-index: 1;
+    }
+}
+
+@media screen and (min-width: 765px) and (max-width: 1024px) {
+    .lightboxCategorie {
+        bottom: 10px;
+        right: 15px;
+        z-index: 1;
+        font-size: 25px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1140px) {
+    .lightboxCategorie {
+        bottom: 15px;
+        right: 15px;
+        font-size: 22px;
+    }
+}
+
+.lightboxPhoto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 564px;
+    height: 495px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+}
+
+@media screen and (max-width: 1140px) {
+    .lightboxPhoto {
+        width: 100%;
+    }
+}
+
+.lightbox-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 1140px) {
+    .lightbox-content {
+        width: 70%;
+    }
+}
