@@ -23,45 +23,16 @@ function photos_events_setup()
 	load_theme_textdomain('photos-events', get_template_directory() . '/languages');
 
 	add_theme_support('automatic-feed-links');
-
 	add_theme_support('title-tag');
-
 	add_theme_support('post-thumbnails');
+
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primaire', 'motanathalie'),
 			'menu-2' => esc_html__('Secondaire', 'motanathalie'),
 		)
 	);
-	function register_my_footer_menu()
-	{
-		register_nav_menu('footer', __('footer'));
-	}
-
 	add_action('after_setup_theme', 'register_my_footer_menu');
-	add_theme_support(
-		'html5',
-		array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-			'style',
-			'script',
-		)
-	);
-
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'photos_events_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
-		)
-	);
 
 	add_theme_support('customize-selective-refresh-widgets');
 
@@ -106,28 +77,34 @@ function photos_events_scripts()
 }
 add_action('wp_enqueue_scripts', 'photos_events_scripts');
 
-/***ajouter le js script  */
-
 function enqueue_custom_script()
 {
+	// Ajoute le script 'custom-script' 
 	wp_enqueue_script('custom-script', get_template_directory_uri() . '/script.js', array('jquery'), '1.0', true);
-	wp_localize_script('custom-script', 'ajax_object', array('ajaxurl' => admin_url('admin-ajax.php')));
-	wp_enqueue_script('menuburgerJS', get_stylesheet_directory_uri() . '/js/menuburger.js', array('jquery'), '1.0.0', true);
-	wp_enqueue_script('modaleJS', get_stylesheet_directory_uri() . '/js/modale.js', array('jquery'), '1.0.0', true);
-	// Affichage des images miniature (script JQuery)
-	wp_enqueue_script('MiniatureJS', get_stylesheet_directory_uri() . '/js/miniature.js', array('jquery'), '1.0.0', true);
-	// Gestion des Filtres (script JQuery)
-	wp_enqueue_script('filtresJS', get_stylesheet_directory_uri() . '/js/filtres.js', array('jquery'), '1.0.0', true);
 
+	// Permet de transmettre l'URL AJAX au script 'custom-script' sous le nom 'ajax_object'
+	wp_localize_script('custom-script', 'ajax_object', array('ajaxurl' => admin_url('admin-ajax.php')));
+
+	// Gestion du Menu Burger (script JQuery)
+	wp_enqueue_script('menuburgerJS', get_stylesheet_directory_uri() . '/js/menuburger.js', array('jquery'), '1.0.0', true);
+
+	// Gestion de la Modale
+	wp_enqueue_script('modaleJS', get_stylesheet_directory_uri() . '/js/modale.js', array('jquery'), '1.0.0', true);
+
+	// Affichage des images miniature
+	wp_enqueue_script('MiniatureJS', get_stylesheet_directory_uri() . '/js/miniature.js', array('jquery'), '1.0.0', true);
+
+	// Gestion des Filtres
+	wp_enqueue_script('filtresJS', get_stylesheet_directory_uri() . '/js/filtres.js', array('jquery'), '1.0.0', true);
 
 	// Bibliotheque Select2 pour les selects de tri
 	wp_enqueue_script('select2-js', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js', array('jquery'), '4.0.13', true);
 	wp_enqueue_style('select2-css', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css', array());
-	// Custom JS (script JQuery)
+
+	// Custom JS
 	wp_enqueue_script('CustomJS', get_stylesheet_directory_uri() . '/js/CustomJS.js', array('jquery'), '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_script');
-
 
 /**
  * Implémente la fonctionnalité d'en-tête personnalisé.
@@ -253,6 +230,7 @@ function filter_photos_function()
 		);
 	}
 
+
 	$query = new WP_Query($args);
 
 	ob_start();
@@ -260,15 +238,11 @@ function filter_photos_function()
 	if ($query->have_posts()) {
 		while ($query->have_posts()) {
 			$query->the_post();
-			// Générez ici le HTML pour chaque photo
 			?>
 			<div class="blockPhotoRelative">
 				<img src="<?php echo esc_url(wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0]); ?>" alt="<?php the_title(); ?>">
-				<!-- Ajoutez ici le reste de votre structure HTML pour chaque photo -->
-				<!-- Par exemple, titre, catégorie, icônes, etc. -->
 				<div class="overlay">
 					<h2><?php echo esc_html(get_the_title()); ?></h2>
-					<!-- ... Autres éléments HTML ... -->
 				</div>
 			</div>
 <?php
