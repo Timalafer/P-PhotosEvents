@@ -25,6 +25,7 @@ function photos_events_setup()
 	add_theme_support('automatic-feed-links');
 	add_theme_support('title-tag');
 	add_theme_support('post-thumbnails');
+	add_theme_support('customize-selective-refresh-widgets');
 
 	register_nav_menus(
 		array(
@@ -32,9 +33,6 @@ function photos_events_setup()
 			'menu-2' => esc_html__('Secondaire', 'motanathalie'),
 		)
 	);
-	add_action('after_setup_theme', 'register_my_footer_menu');
-
-	add_theme_support('customize-selective-refresh-widgets');
 
 	add_theme_support(
 		'custom-logo',
@@ -61,11 +59,18 @@ function photos_events_content_width()
 }
 add_action('after_setup_theme', 'photos_events_content_width', 0);
 
+/*** Implémente la fonctionnalité d'en-tête personnalisé */
+
+require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/inc/customizer.php';
 
 
-/**
- * Ajoute des scripts et des styles.
- */
+
+
+/*** Ajoute des scripts et des styles */
+
 function photos_events_scripts()
 {
 	wp_enqueue_style('photos-events-style', get_stylesheet_uri(), array(), _S_VERSION);
@@ -105,16 +110,6 @@ function enqueue_custom_script()
 	wp_enqueue_script('CustomJS', get_stylesheet_directory_uri() . '/js/CustomJS.js', array('jquery'), '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_script');
-
-/**
- * Implémente la fonctionnalité d'en-tête personnalisé.
- */
-require get_template_directory() . '/inc/custom-header.php';
-require get_template_directory() . '/inc/template-tags.php';
-require get_template_directory() . '/inc/template-functions.php';
-require get_template_directory() . '/inc/customizer.php';
-
-
 
 
 

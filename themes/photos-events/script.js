@@ -45,7 +45,6 @@ jQuery(document).ready(function ($) {
             }
         });
 
-
     });
 
     /* Lightbox Ouverture et Fermeture */

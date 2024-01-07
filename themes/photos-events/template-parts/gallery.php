@@ -4,14 +4,16 @@ $args = array(
     'post_type' => 'photos',
     'posts_per_page' => 12,
 );
-
+// Nouvelle instance de WP_Query avec les arguments définis
 $photos_query = new WP_Query($args);
-
+// Vérification s'il y a des publications correspondant à la requête
 if ($photos_query->have_posts()) {
     while ($photos_query->have_posts()) {
         $photos_query->the_post();
         if (has_post_thumbnail()) {
+            // Obtention de l'URL de l'image en taille 'full'
             $image_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
+            // Récupération des catégories associées à la photo
             $categories = get_the_terms(get_the_ID(), 'categorie');
             if ($categories && !is_wp_error($categories)) {
                 $category_names = array();

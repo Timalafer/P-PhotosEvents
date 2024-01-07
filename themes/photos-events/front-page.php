@@ -18,8 +18,12 @@
     </section>
 
 
+    <!--charger plus -->
 
     <button id="load-more" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>">Charger plus</button>
+
+
+    <!-- Permet les appels AJAX côté client vers les fonctionnalités back-end spécifiques de WordPress -->
 
 
     <script>
